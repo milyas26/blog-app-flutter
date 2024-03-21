@@ -11,7 +11,7 @@ class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, User?>> currentUser() async {
+  Future<Either<Failure, User>> currentUser() async {
     try {
       final response = await remoteDataSource.getCurrentUserData();
       if (response == null) {
