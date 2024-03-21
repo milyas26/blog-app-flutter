@@ -27,7 +27,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final response = await supabaseClient.auth
           .signInWithPassword(password: password, email: email);
 
-      if (response.user != null) {
+      if (response.user == null) {
         throw const ServerException('Server Error: User not found.');
       }
 
@@ -46,7 +46,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final response = await supabaseClient.auth
           .signUp(email: email, password: password, data: {'name': name});
 
-      if (response.user != null) {
+      if (response.user == null) {
         throw const ServerException('Server Error: User not created.');
       }
       return UserModel.fromJson(response.user!.toJson());
