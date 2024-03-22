@@ -36,4 +36,24 @@ class BlogModel extends Blog {
           : DateTime.parse(map['updated_at']),
     );
   }
+
+  BlogModel copyWith({
+    String? id,
+    String? posterId,
+    String? title,
+    String? content,
+    List<String>? topics,
+    String? imageUrl,
+    DateTime? updatedAt,
+  }) {
+    return BlogModel(
+      id: id ?? this.id,
+      posterId: posterId ?? this.posterId,
+      title: title ?? this.title,
+      content: content ?? this.content,
+      topics: topics ?? this.topics,
+      imageUrl: imageUrl ?? this.imageUrl,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
 }
