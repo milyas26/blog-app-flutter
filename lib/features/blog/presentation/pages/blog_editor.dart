@@ -13,6 +13,12 @@ class BlogEditor extends StatelessWidget {
       controller: titleController,
       decoration: InputDecoration(hintText: hintText),
       maxLines: null,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return '$hintText is required.';
+        }
+        return null;
+      },
     );
   }
 }
